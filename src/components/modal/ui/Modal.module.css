@@ -21,8 +21,8 @@
   background: var(--white);
   padding: 18px 30px;
   border-radius: 16px;
-  width: 100%;
-  max-width: 500px;
+  width: 500px;
+  max-width: 90vw;
   height: 290px;
   display: flex;
   flex-direction: column;
