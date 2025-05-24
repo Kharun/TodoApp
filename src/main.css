@@ -1,0 +1,13 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Kanit", sans-serif;
+}
+
+:root {
+  /* COLORS */
+  --purple: #6c63ff;
+  --white: #f7f7f7;
+  --black: #252525;
+}
