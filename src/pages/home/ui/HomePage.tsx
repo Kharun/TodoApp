@@ -150,11 +150,7 @@ export const HomePage = () => {
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                {darkMode ? (
-                  <img src="/src/assets/images/empty_dark.svg" alt="" />
-                ) : (
-                  <img src="/src/assets/images/empty.svg" alt="" />
-                )}
+                {darkMode ? <img src="/empty_dark.svg" alt="" /> : <img src="/empty.svg" alt="" />}
                 <p>Empty...</p>
               </motion.div>
             )}
