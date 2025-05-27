@@ -4,9 +4,9 @@ import { EditIcon, MoonIcon, PlusIcon, SunIcon, TrashIcon } from "@/assets/icons
 import { useEffect, useRef, useState } from "react";
 import { Modal } from "@/components/modal";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from "@/components/useTheme";
 
 export const HomePage = () => {
-  const [theme, setTheme] = useState(false);
   const [data, setData] = useState<{ task: string; status: string }[]>([]);
   const [task, setTask] = useState("");
   const [modal, setModal] = useState(false);
@@ -15,10 +15,7 @@ export const HomePage = () => {
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
   const isFirstRender = useRef(true);
-
-  const handleTheme = () => {
-    setTheme((prev) => !prev);
-  };
+  const { darkMode, toggleTheme } = useTheme();
 
   const openModal = (type: "add" | "edit" | "delete", index?: number) => {
     setCurrentEditIndex(index !== undefined ? index : null);
@@ -76,6 +73,10 @@ export const HomePage = () => {
     localStorage.setItem("todos", JSON.stringify(data));
   }, [data]);
 
+  useEffect(() => {
+    document.body.classList.toggle("dark", darkMode);
+  }, [darkMode]);
+
   return (
     <>
       <div className={styles.layout}>
@@ -91,11 +92,11 @@ export const HomePage = () => {
             <option value="complete">Complete</option>
             <option value="incomplete">Incomplete</option>
           </select>
-          <div className={styles.theme} onClick={handleTheme}>
-            <div className={`${styles.theme_item} ${theme && styles.active}`}>
+          <div className={styles.theme} onClick={toggleTheme}>
+            <div className={`${styles.theme_item} ${darkMode && styles.active}`}>
               <MoonIcon />
             </div>
-            <div className={`${styles.theme_item} ${!theme && styles.active}`}>
+            <div className={`${styles.theme_item} ${!darkMode && styles.active}`}>
               <SunIcon />
             </div>
           </div>
@@ -149,7 +150,11 @@ export const HomePage = () => {
                 exit={{ opacity: 0, y: 20 }}
                 transition={{ duration: 0.3 }}
               >
-                <img src="/src/assets/images/empty.svg" alt="" />
+                {darkMode ? (
+                  <img src="/src/assets/images/empty_dark.svg" alt="" />
+                ) : (
+                  <img src="/src/assets/images/empty.svg" alt="" />
+                )}
                 <p>Empty...</p>
               </motion.div>
             )}

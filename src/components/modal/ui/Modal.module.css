@@ -8,6 +8,7 @@
   visibility: hidden;
   opacity: 0;
   transition: 0.2s ease-in-out;
+  color: var(--black);
 }
 .modal.active {
   opacity: 1;
@@ -47,7 +48,7 @@
   background: var(--purple);
   transition: 0.1s ease-in-out;
   text-transform: uppercase;
-  color: var(--white);
+  color: #f7f7f7;
   cursor: pointer;
 }
 .modal_btn:hover {

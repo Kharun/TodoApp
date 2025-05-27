@@ -3,6 +3,8 @@
   margin: 0;
   box-sizing: border-box;
   font-family: "Kanit", sans-serif;
+  transition: 0.1s ease-in-out;
+  user-select: none;
 }
 
 :root {
@@ -10,4 +12,16 @@
   --purple: #6c63ff;
   --white: #f7f7f7;
   --black: #252525;
+  --search: #6c63ff;
+}
+
+body {
+  background: var(--white);
+}
+
+.dark {
+  --purple: #6c63ff;
+  --white: #252525;
+  --black: #f7f7f7;
+  --search: #f7f7f7;
 }
